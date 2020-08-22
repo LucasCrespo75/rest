@@ -11,48 +11,94 @@
 	<packaging>war</packaging>
 
 	<name>SilentCodeRest Maven Webapp</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.17</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-servlet</artifactId>
-			<version>1.17</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.17</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>jsr311-api</artifactId>
-			<version>1.1.1</version>
-		</dependency>
+<!-- FIXME change it to the project's website -->
 
-	</dependencies>
 
-	<build>
-		<finalName>SilentCodeRest</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<webXml>WebContent\WEB-INF\web.xml</webXml>
-				</configuration>
+<url>http://www.example.com</url>
+
+
+<dependencies>
+
+
+<dependency>
+
+<groupId>junit</groupId>
+
+<artifactId>junit</artifactId>
+
+<version>4.11</version>
+
+<scope>test</scope>
+
+</dependency>
+
+<dependency>
+
+<groupId>com.sun.jersey</groupId>
+
+<artifactId>jersey-server</artifactId>
+
+<version>1.17</version>
+
+</dependency>
+
+
+<dependency>
+
+<groupId>com.sun.jersey</groupId>
+
+<artifactId>jersey-servlet</artifactId>
+
+<version>1.17</version>
+
+</dependency>
+
+
+<dependency>
+
+<groupId>com.sun.jersey</groupId>
+
+<artifactId>jersey-json</artifactId>
+
+<version>1.17</version>
+
+</dependency>
+
+
+<dependency>
+
+<groupId>javax.ws.rs</groupId>
+
+<artifactId>jsr311-api</artifactId>
+
+<version>1.1.1</version>
+
+</dependency>
+
+</dependencies>
+
+
+<build>
+
+<finalName>SilentCodeRest</finalName>
+
+
+<plugins>
+
+
+<plugin>
+
+<groupId>org.apache.maven.plugins</groupId>
+
+<artifactId>maven-war-plugin</artifactId>
+
+
+<configuration>
+
+<webXml>WebContent\WEB-INF\web.xml</webXml>
+
+</configuration>
 			</plugin>
 		</plugins>
 	</build>

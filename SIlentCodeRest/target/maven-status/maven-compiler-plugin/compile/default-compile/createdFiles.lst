@@ -1,2 +1,4 @@
 entidades\RetornoCalculadoraService.class
+servico\UsuarioServico.class
 servico\CalculadoraServico.class
+entidades\Usuario.class

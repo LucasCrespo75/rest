@@ -12,9 +12,10 @@ import entidades.RetornoCalculadoraService;
 
 public class CalculadoraServico {
 	
+	
 	@Path("/")
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public RetornoCalculadoraService ola() {
 		RetornoCalculadoraService retorno = new RetornoCalculadoraService();
 		retorno.setMensagemRetorno("FUNFOU");
@@ -23,29 +24,36 @@ public class CalculadoraServico {
 	
 	@Path("/somar")//CAMINHO 
 	@GET //consumo retornando algo
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public RetornoCalculadoraService somar(@QueryParam("valor1")double valor1, 
-						@QueryParam("valor2")double valor2, @QueryParam("resultado") double resultado) {
+						@QueryParam("valor2")double valor2) {
 		RetornoCalculadoraService retorno = new RetornoCalculadoraService();
 		retorno.setCodigoRetorno(0);
 		retorno.setMensagemRetorno("Sucesso");
 		retorno.setAcao("Soma");
-		retorno.getResultadoRetorno();
+		retorno.setResultadoRetorno(valor1 + valor2);
+		
+		
+		
 		
 		return retorno;
 		
 		//return ""+ (valor1 + valor2);
 }
+
 	@Path("/subtrair")
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public RetornoCalculadoraService subtrair(@QueryParam("valor1")double valor1, 
-						   @QueryParam("valor2")double valor2, @QueryParam("resultado") double resultado) {
+						   @QueryParam("valor2")double valor2) {
 RetornoCalculadoraService retorno = new RetornoCalculadoraService();
 retorno.setCodigoRetorno(0);
 retorno.setMensagemRetorno("Sucesso");
 retorno.setAcao("Subtrair");
-retorno.getResultadoRetorno();
+retorno.setResultadoRetorno(valor1 - valor2);
+
+
+
 
 return retorno;
 
@@ -54,36 +62,41 @@ return retorno;
 }
 	@Path("/multiplicar")
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public RetornoCalculadoraService multiplicar(@QueryParam("valor1")double valor1,
-							@QueryParam("valor2")double valor2 , @QueryParam("resultado") double resultado) {
+							@QueryParam("valor2")double valor2) {
 		RetornoCalculadoraService retorno = new RetornoCalculadoraService();
 		retorno.setCodigoRetorno(0);
 		retorno.setMensagemRetorno("Sucesso");
 		retorno.setAcao("Multiplicar");
-		retorno.getResultadoRetorno();
+		retorno.setResultadoRetorno(valor1 * valor2);
+		
+	
 
 		return retorno;
 		//return ""+ (valor1 * valor2);
 }
 	@Path("/dividir")
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public RetornoCalculadoraService dividir(@QueryParam("valor1")double valor1, 
-							@QueryParam("valor2")double valor2, @QueryParam("resultado") double resultado) {
+							@QueryParam("valor2")double valor2, @QueryParam("resultado")double resutlado) {
 		RetornoCalculadoraService retorno = new RetornoCalculadoraService();
 		retorno.setCodigoRetorno(0);
 		retorno.setMensagemRetorno("Sucesso");
 		retorno.setAcao("Dividir");
-		retorno.getResultadoRetorno();
 		
 		if(valor1 == 0) {
 			retorno.setMensagemRetorno("NAO PODE SER DIVIDIDO POR ZERO");
-		}else{
-		resultado = valor1/valor2;
+		
+		}else {
+		retorno.setResultadoRetorno(valor1/valor2);;
 		}
 		
 		return retorno;
+		
+		
+		
 		
 			
 		
@@ -93,4 +106,4 @@ return retorno;
 
 		
 	}
-
+	
