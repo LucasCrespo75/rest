@@ -4,7 +4,7 @@ public class RetornoCalculadoraService {
 	
 		private int codigoRetorno; // 0 - sucesso 1 - falha
 		private String mensagemRetorno; // msg da falha ocorrida
-		private String acao;
+		private String acao;//acao da calculadora
 		private double resultadoRetorno;
 
 		public int getCodigoRetorno() {
