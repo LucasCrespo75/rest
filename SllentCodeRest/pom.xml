@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.4</version>
+			<version>11.2.0</version>
 		</dependency>
 
 		<!-- PROVIDER JPA(HIBERNATE) -->
@@ -53,11 +53,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.owlike</groupId>
-			<artifactId>genson</artifactId>
-			<version>1.6</version>
 		</dependency>
 	</dependencies>
 
@@ -74,4 +69,3 @@
 		</plugins>
 	</build>
 </project>
-
