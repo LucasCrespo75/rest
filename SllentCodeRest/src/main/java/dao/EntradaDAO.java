@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.Date;
+import java.util.List;
+
 import entidade.Entrada;
 
 /**
@@ -12,10 +15,7 @@ import entidade.Entrada;
 public interface EntradaDAO {
 	
 	public void inserirEntrada(Entrada entrada);
-
-	public void alterarEntrada(Entrada entrada);
-	
-	public Entrada pesquisarEntrada(int id);
-
+	public List<Entrada> pesquisarEntrada(Entrada entrada,
+			Date dataInicio, Date dataFim);
 
 }

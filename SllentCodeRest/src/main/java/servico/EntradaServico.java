@@ -23,7 +23,7 @@ public class EntradaServico {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String ola() {
-		return "Serviï¿½o de Entrada ativo";
+		return "Serviço de Entrada ativo";
 	}
 	
 	@Path("/cadastrarEntrada")
@@ -46,55 +46,17 @@ public class EntradaServico {
 		
 		return retorno;
 	}
-	@Path("/editarEntrada")
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public RetornoServico editarEntrada(Entrada entrada) {
-		RetornoServico retorno = new RetornoServico();
-		retorno.setCodigoRetorno(0);
-		retorno.setMensagemRetorno("Editado com sucesso!");
-		
-		Entrada novo = new Entrada();
-		
-		novo.setNome_cliente(new String());
-		novo.setTel_cliente(new String());
-		novo.setData(new Date());
-		
-		boolean achou = false;
-		
-		
-		if(novo.getNome_cliente().isEmpty() 
-		&& novo.getTel_cliente().isEmpty()) {
-	//	&& novo.getData() { achar qual o metodo de Date
-		}
-		achou = true;
-		
-		if(achou) {
-			System.out.println("EROO");
-			
-		}else {
-			
-			EntradaDAO entradaDAO = new EntradaDAOImpl();
-			entradaDAO.alterarEntrada(entrada);
-			entradaDAO.inserirEntrada(novo);
-			novo = new Entrada();
-		}
-		return retorno;
 	
-}
 	@Path("/pesquisarEntrada")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public RetornoServico pesquisarEntrada(@QueryParam("id") int id) {
-		RetornoServico retorno = new RetornoServico();
-		retorno.setCodigoRetorno(0);
-		retorno.setMensagemRetorno("Teste do teste");
+	public RetornoServico pesquisarEntrada( @QueryParam("nomeCliente") String nomeCliente, 
+											@QueryParam("telCliente") String telCliente, 
+											@QueryParam("dataInicio") Date dataInicio, 
+											@QueryParam("dataFim") Date dataFim, 
+											@QueryParam("placaVeiculo") String placaVeiculo) {
 		
-		EntradaDAO entradaDAO = new EntradaDAOImpl();
-		retorno.setEntradaRetorno(entradaDAO.pesquisarEntrada(id));
-		
-		return retorno;
+		return null;
 	}
 	
 }

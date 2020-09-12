@@ -1,10 +1,14 @@
 package dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import entidade.Entrada;
-import entidade.Usuario;
 import util.JpaUtil;
 
 /**
@@ -38,39 +42,68 @@ public class EntradaDAOImpl implements EntradaDAO {
 
 	}
 
-/**
- * Metodo alterar, recebe o usuario, criar uma transi��o, inicia e executa a a��o de merger
- */
-	public void alterarEntrada(Entrada entrada) {
-
-		EntityManager ent = JpaUtil.getEntityManager();
-		EntityTransaction tx = ent.getTransaction();
-		tx.begin();
-		
-		
-		ent.merge(entrada);
-		
-		tx.commit();
-		ent.close();
-
-	}
-
-/**
- * Pesquisar, pesquisar pela chave primaria que seria o cpf
- */
-	public Entrada pesquisarEntrada(int id) {
+	@Override
+	public List<Entrada> pesquisarEntrada(Entrada entrada, Date data_Inicio, Date data_Fim) {
 		
 		EntityManager ent = JpaUtil.getEntityManager();
-		Entrada entrada = ent.find(Entrada.class, id);
 		
-		return entrada;
-		
+		Query query = ent.createQuery("from Entrada p where 1=1 " + montarWherePesquisa(entrada , data_Inicio, data_Fim));
+		List<Entrada> perguntas = query.getResultList();
+		return perguntas;
 	}
 
-
+	private String montarWherePesquisa(Entrada entrada, Date data_Inicio, Date data_Fim) {
+	
 	
 
-	
-}	
-	
+	//public String montarWherePesquisa(String nome_cliente, String tel_cliente, Date data_Inicio, Date data_Fim,
+	//		String placa) {
+		
+		String where = "";
+		// Fazer codigo aqui	
+		SimpleDateFormat dataSimples = new SimpleDateFormat("dd/MM/yyyy");
+		
+		if(entrada.getNome_cliente() != null && !entrada.getNome_cliente().isEmpty()) {
+			where += " and upper(e.nome_cliente) like upper('%" + entrada.getNome_cliente() + "%')";
+		}
+		
+		if(entrada.getTel_cliente() != null && !entrada.getTel_cliente().isEmpty()) {
+			where += " and upper(t.tel_cliente) like upper('%" + entrada.getTel_cliente() + "%')";
+		}
+		if(data_Inicio != null && data_Fim != null) {
+			where += " and e.data_Entrada BETWEEN TO_DATE('" + dataSimples.format(data_Inicio) + "', 'DD/MM/YYYY') and "
+					+ " TO_DATE('" + dataSimples.format(data_Fim) + "', 'DD/MM/YYYY')";
+		}
+		if(entrada.getVeiculo().getPlaca() != null && !entrada.getVeiculo().getPlaca().isEmpty()) {
+			where += " and upper(e.Placa) like upper('%" + entrada.getVeiculo().getPlaca() + "%')";
+		}
+		
 
+
+
+		
+		
+		
+		
+	//	if
+		
+		//telCliente
+		
+		
+	//	if
+		//dataInicio
+		
+		
+//		if
+		//dataFim
+		
+		
+	//	if
+		//placaVeiculo
+		
+		
+		return where;
+	}
+	
+	
+}

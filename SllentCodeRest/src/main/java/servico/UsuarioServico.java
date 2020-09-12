@@ -20,7 +20,7 @@ public class UsuarioServico {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String ola() {
-		return "Serviï¿½o de usuario ativo";
+		return "Serviço de usuario ativo";
 	}
 	
 	@Path("/cadastrarUsuario")
